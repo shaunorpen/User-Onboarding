@@ -20,6 +20,16 @@ export default function RenderForm (props) {
                 <ErrorMessage name='password' component='span' />
             </div>
             <div>
+                <label htmlFor='role'>Role: </label>
+                <Field component="select" name="role">
+                    <option value=''></option>
+                    <option value='Team Member'>Team Member</option>
+                    <option value='Team Manager'>Team Manager</option>
+                    <option value='Division Manager'>Division Manager</option>
+                </Field>
+                <ErrorMessage name='role' component='span' />
+            </div>
+            <div>
                 <label htmlFor='tos'>I agree to the Terms of Service</label>
                 <Field type="checkbox" name="tos" checked={props.values.tos} />
                 <ErrorMessage name='tos' component='span' />

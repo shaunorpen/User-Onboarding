@@ -6,6 +6,7 @@ const initialValues = {
     name: '',
     email: '',
     password: '',
+    role: '',
     tos: '',
 }
 
@@ -20,6 +21,8 @@ const validationSchema = Yup.object().shape({
     password: Yup.string()
         .min(5, 'Password is too short')
         .required('Please provide a valid password'),
+    role: Yup.string()
+        .required('Please choose a role'),
     tos: Yup.boolean()
         .required('Please agree to the terms of service'),
 })

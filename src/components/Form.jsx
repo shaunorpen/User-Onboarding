@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import axios from 'axios';
 
-import { initialValues, validationSchema, postApi}  from '../data/data';
+import { initialValues, validationSchema, postApi }  from '../data/data';
 import RenderForm from './RenderForm';
 import RenderUsers from './RenderUsers';
 
@@ -16,6 +16,7 @@ function UserForm () {
             name: userDetails.name,
             email: userDetails.email,
             password: userDetails.password,
+            role: userDetails.role,
             tos: userDetails.tos,
         }
         setUsers(users.concat([newUser]));
@@ -24,7 +25,7 @@ function UserForm () {
     function onSubmit (values, actions) {
         axios.post(postApi, values)
             .then(response => {
-               addNewUser(response.data);
+                addNewUser(response.data);
             })
             .catch(err => {
                setError(err.message);
