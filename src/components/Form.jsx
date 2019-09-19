@@ -33,6 +33,14 @@ function UserForm () {
         actions.resetForm();
     }
 
+    function validateForm (values, props) {
+        const errors = {};
+        if (values.email === 'waffle@syrup.com') {
+            errors.email = 'That email address is already taken';
+        }
+        return errors;
+    }
+
     return (
         <>
             <div className='form'>
@@ -42,6 +50,7 @@ function UserForm () {
                     onSubmit={onSubmit}
                     render={RenderForm}
                     validationSchema={validationSchema}
+                    validate={validateForm}
                 />
                 {{error} && <div><p>{error}</p></div>}
             </div>
