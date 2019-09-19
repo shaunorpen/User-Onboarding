@@ -16,6 +16,7 @@ const validationSchema = Yup.object().shape({
         .required('Please provide a name'),
     email: Yup.string()
         .email('Email is invalid')
+        .matches(/^(waffles@syrup.com)$/, 'Email is already taken')
         .required('Please provide a valid email address'),
     password: Yup.string()
         .min(5, 'Password is too short')
