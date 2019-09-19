@@ -9,6 +9,7 @@ import RenderUsers from './RenderUsers';
 function UserForm () {
 
     const [users, setUsers] = useState([]);
+    const [error, setError] = useState();
 
     function addNewUser (userDetails) {
         const newUser = {
@@ -25,8 +26,8 @@ function UserForm () {
             .then(response => {
                addNewUser(response.data);
             })
-            .catch(error => {
-                debugger
+            .catch(err => {
+               setError(err.message);
             })
         actions.resetForm();
     }
@@ -41,6 +42,7 @@ function UserForm () {
                     render={RenderForm}
                     validationSchema={validationSchema}
                 />
+                {{error} && <div><p>{error}</p></div>}
             </div>
             <div className='users'>
                 <h2>User List</h2>
